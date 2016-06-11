@@ -1,0 +1,15 @@
+body {
+    background-image: url("../images/chemistry.jpg");
+    background-repeat: no-repeat;
+    /*background-size: auto|length|cover|contain|initial|inherit; */
+    /*background-size: cover; */
+    background-size: 1608px 775px;  
+}
+
+h1 {
+	text-align: center;
+}
+
+button{
+	margin: 10px;
+}
