@@ -1,5 +1,6 @@
 body {		
-	background-image: url("../images/xchemistry.jpg"); 
+	background-image: url("../images/grasspole.jpg"); 
+	/*	background-image: url("../images/poolwater.jpg"); */
     background-repeat: no-repeat;
     /*background-size: auto|length|cover|contain|initial|inherit; */
     /*background-size: cover; */
@@ -19,13 +20,13 @@ button,  form, input {
 }
 
 .imageClass {
-	height: 200px;
-	width:  260px;
+	height: 160px;
+	width:  211px;
 	margin: 5px;
 	float:center;
 }
 
-#movInText {
+#enterText {
 	color: #fff;
 	text-shadow: 2px 2px #000;
 }
