@@ -134,8 +134,12 @@ $(document).ready(function() {
 		// This line of code will grab the input from the textbox
 		var movie = $('#movie-input').val().trim();
 		// The movie from the textbox is then added to our array
-		movies.push(movie);
-		movie = " ";
+		if (movie != "") {
+			movies.push(movie);
+			$('#movie-input').val('');
+		}
+
+	
 		
 		// Our array then runs which handles the processing of our movie array
 		renderButtons();
