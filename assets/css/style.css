@@ -1,15 +1,33 @@
-body {
-    background-image: url("../images/chemistry.jpg");
+body {		
+	background-image: url("../images/xchemistry.jpg"); 
     background-repeat: no-repeat;
     /*background-size: auto|length|cover|contain|initial|inherit; */
     /*background-size: cover; */
     background-size: 1608px 775px;  
-}
+
+}	
 
 h1 {
 	text-align: center;
+	font-size: 65px;
+	text-shadow: 4px 4px #000;
+	color: #FFF;
 }
 
-button{
-	margin: 10px;
+button,  form, input {
+			margin: 10px;
 }
+
+.imageClass {
+	height: 200px;
+	width:  260px;
+	margin: 5px;
+	float:center;
+}
+
+#movInText {
+	color: #fff;
+	text-shadow: 2px 2px #000;
+}
+
+
