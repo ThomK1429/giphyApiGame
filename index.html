@@ -12,7 +12,7 @@
 	
 </head>
 
-<body>
+<body data-state='image1'>
 
 	<div class="container">
 		<h1 id="favHdr">Favorite Things</h1>
@@ -51,7 +51,23 @@ $(document).ready(function() {
 	//The array will be sorted later in the program
 	var favoritesArray = ["dogs", 'zebras', 'cats', 'fish', 'tesla', 'automobiles'];
 
-	
+	$(document).on('click', '#favHdr', function() {
+		var state = $(this).attr('data-state');
+
+		if (state == 'image1'){
+			$('body').css('background-image','url(assets/images/poolwater.jpg)');
+			$(this).attr('data-state', 'image2');
+		}
+		  else {
+		  	$('body').css('background-image','url(assets/images/grasspole.jpg)');
+		  	$(this).attr('data-state', 'image1');
+		}
+
+		$('body').css('background-repeat', 'no-repeat');
+		$('body').css('background-size',  '1608px 775px');
+	});
+
+
 	$(document).on('click', '.imageClass', function() {
 		//alert("an image has been clicked!");
 		var state = $(this).attr('data-state');
@@ -63,9 +79,6 @@ $(document).ready(function() {
 		  	$(this).attr('src', $(this).data('still'));
 		  	$(this).attr('data-state', 'still');
 		}
-
-
-
 
 	});
 
@@ -90,8 +103,8 @@ $(document).ready(function() {
 
             // 
             .done(function(response) {
-            	console.log("response.data=" + response.data)
-            	console.log(response);
+            	//console.log("response.data=" + response.data)
+            	//console.log(response);
 
                 // 
                 var imageUrl = response.data.image_original_url;
