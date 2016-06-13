@@ -13,6 +13,14 @@ h1 {
 	font-size: 65px;
 	text-shadow: 4px 4px #000;
 	color: #FFF;
+	margin-top: 20px;
+}
+
+h5 {
+	text-align: center;
+	text-shadow: 4px 4px #000;
+	color: #FFF;
+	margin-top: -50px;
 }
 
 button,  form, input {

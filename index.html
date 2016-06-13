@@ -15,7 +15,10 @@
 <body>
 
 	<div class="container">
-	  <h1 id="favHdr">Favorite Things</h1>
+		<h1 id="favHdr">Favorite Things</h1>
+		<h5>"Powered By Giphy - www.giphy.com"</h5>
+	  
+
 
 	  <!-- Rendered Buttons will get Dumped Here  -->
 	  <div id="buttonsView"></div>
@@ -28,11 +31,12 @@
 	    <input id="addFavBtn" type="submit" value="Add the Favorite">
 	    <input id="clearFavBtn" type="submit" value="Clear the Favorites">
 	    <input id="clearImgBtn" type="submit" value="Clear the Images">
+
 	  </form>
 
 
 	  <!-- Favorites will Get Dumped Here -->
-	  <div id="favImagesDiv"></div>
+	  <div class="favImagesDiv"></div>
 
 
 
@@ -44,10 +48,31 @@ $(document).ready(function() {
  	
 
 	// Initial array of favoritesArray
-	//var favoritesArray = ["Albert Einstein", 'Madame Curie', 'Sir Issac Newton', 'Thomas A. Edison'];
+	//The array will be sorted later in the program
 	var favoritesArray = ["dogs", 'zebras', 'cats', 'fish', 'tesla', 'automobiles'];
 
 	
+	$(document).on('click', '.imageClass', function() {
+		//alert("an image has been clicked!");
+		var state = $(this).attr('data-state');
+		if (state == 'still'){
+			$(this).attr('src', $(this).data('animate'));
+			$(this).attr('data-state', 'animate');
+		}
+		  else {
+		  	$(this).attr('src', $(this).data('still'));
+		  	$(this).attr('data-state', 'still');
+		}
+
+
+
+
+	});
+
+	
+
+
+
 	// ========================================================
 	// displayFavoriteInfo function now re-renders the HTML to display the appropriate content. 
 	function displayFavoriteInfo(){
@@ -66,20 +91,27 @@ $(document).ready(function() {
             // 
             .done(function(response) {
             	console.log("response.data=" + response.data)
+            	console.log(response);
 
                 // 
                 var imageUrl = response.data.image_original_url;
+                var imageUrlStill = response.data.fixed_height_small_still_url;
 
                 // 
                 var catImage = $("<img>");
                 
                 // 
                 catImage.attr('src', imageUrl);
+                catImage.attr('data-animate', imageUrl);
+                catImage.attr('data-still', imageUrlStill);
+                catImage.attr('data-state', 'animate');
+
+
                 catImage.attr('class', 'imageClass');
                 catImage.attr('alt', 'cat image');
 
                 //
-                $('#favImagesDiv').prepend(catImage);
+                $('.favImagesDiv').prepend(catImage);
             });
 			
 	}
@@ -120,13 +152,13 @@ $(document).ready(function() {
 			$('#favorite-input').val('');
 		}
 
-	
 		
 		// Our array then runs which handles the processing of our favorite array
 		renderButtons();
 		// We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
 		return false;
 	})
+
 
 
 	// This function handles events where one button is clicked
@@ -150,7 +182,7 @@ $(document).ready(function() {
 
 // This function handles events where one button is clicked
 	$('#clearImgBtn').on('click', function(){
-		$('#favImagesDiv').empty();
+		$('.favImagesDiv').empty();
 
 		// Our array then runs which handles the processing of our movie array
 		renderButtons();
